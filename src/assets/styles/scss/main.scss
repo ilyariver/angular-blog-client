@@ -1,0 +1,31 @@
+// Подключение шрифтов локально из папки "./src/fonts"
+@use "config/fonts";
+
+// Подключение переменных
+@use "config/root";
+
+/** Обнуление */
+@use "config/reset";
+
+// Библиотеки, раскомментировать для использования
+// @use 'libs/aos';
+// @use 'libs/swiper';
+
+// Подключение custom scrollbar для всего сайта
+@use "config/scrollbar";
+
+// Общие параметры, шаблоны(заготовки) и вспомогательные классы
+@use "config/base";
+
+// Подключение стилей отдельных блоков и секций
+//@use "components/header";
+//@use "components/footer";
+@use "components/danger-msg";
+@use "components/dialog";
+@use "components/main-btn";
+@use "components/select";
+@use "components/datepicker";
+@use "components/simple-input";
+@use "components/checkbox";
+@use "components/quill";
+@use "components/auth-panel";

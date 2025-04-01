@@ -1,0 +1,19 @@
+.home-page {
+  &__wrap {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    gap: 30px;
+  }
+
+  &__articles {
+    flex-basis: 70%;
+  }
+
+  &__aside {
+    position: sticky;
+    top: 150px;
+    flex-basis: 30%;
+    z-index: -1;
+  }
+}

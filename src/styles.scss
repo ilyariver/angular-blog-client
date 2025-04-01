@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use 'quill/dist/quill.snow.css';
+@use "bootstrap";
+@use "assets/styles/scss/main";

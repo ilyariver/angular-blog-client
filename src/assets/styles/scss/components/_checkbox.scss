@@ -1,0 +1,21 @@
+.mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
+.mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background,
+.mdc-checkbox__native-control:focus:focus:not(:checked)~.mdc-checkbox__background,
+.mdc-checkbox__native-control:focus:focus:not(:indeterminate)~.mdc-checkbox__background,
+.mdc-checkbox:hover>.mdc-checkbox__native-control:not(:checked)~.mdc-checkbox__background,
+.mdc-checkbox:hover>.mdc-checkbox__native-control:not(:indeterminate)~.mdc-checkbox__background {
+  background-color: var(--bs-background-color)!important;
+  border-color: var(--bs-color-blue)!important;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.mdc-checkbox__checkmark-path {
+  stroke: var(--bs-color-blue)!important;
+}
+
+.mat-internal-form-field>label {
+  font-weight: 300;
+  font-family: var(--bs-font-family), sans-serif!important;
+  color: var(--bs-font-color)!important;
+  transition: color 0.3s ease;
+}

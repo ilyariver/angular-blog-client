@@ -1,0 +1,53 @@
+@keyframes show-header {
+	0% {
+		inset-block-start: -100%;
+	}
+
+	100% {
+		inset-block-start: 0;
+	}
+}
+
+@keyframes fade-up-big {
+	0% {
+		opacity: 0;
+		transform: translateX(-1rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(359deg);
+	}
+}
+
+@keyframes showOpacity {
+  0% {
+    opacity: 0;
+    translate: 0 -15vw;
+    scale: 1 200%;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  70% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1 100%;
+  }
+}

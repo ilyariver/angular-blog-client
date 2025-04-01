@@ -1,0 +1,9 @@
+<div class="comments">
+  <div class="comments__avatar" [style.background-image]="'url(/../assets/images/avatar-placeholder.png)'"></div>
+  <div class="comments__right">
+    <div class="comments__name">{{userData.name}}</div>
+    <div class="comments__text">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+.article-post-page {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}

@@ -1,0 +1,36 @@
+.mat-mdc-dialog-component-host {
+  button[mat-dialog-close] {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+}
+
+.mat-mdc-dialog-container {
+  .mat-mdc-dialog-title {
+    font-family: var(--bs-font-family), sans-serif!important;
+    font-size: 25px!important;
+    font-weight: 700!important;
+    color: var(--bs-font-color)!important;
+  }
+
+  .mat-mdc-dialog-content {
+     font-family: var(--bs-font-family), sans-serif!important;
+ }
+}
+
+.mat-mdc-dialog-surface {
+  border-radius: 8px!important;
+  background-color: var(--bs-background-color)!important;
+}
+
+input:-webkit-autofill {
+  background-color: transparent!important;
+  -webkit-background-clip: text; /* Опционально, если нужно прозрачность */
+  -webkit-text-fill-color: var(--bs-font-color)!important;
+}
+
+input:autofill {
+  background-color: transparent !important;
+  color: inherit !important;
+}

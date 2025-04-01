@@ -1,0 +1,33 @@
+<div class="auth-panel">
+  <div class="auth-panel__container">
+    <div class="auth-panel__panel">
+      <h1 class="auth-panel__title">Вход в аккаунт</h1>
+
+      <form class="auth-panel__form">
+        <mat-form-field class="example-full-width">
+          <input
+            type="email"
+            matInput
+            [formControl]="emailFormControl"
+            [errorStateMatcher]="matcher"
+            placeholder="E-Mail"
+          >
+          <mat-hint>Errors appear instantly!</mat-hint>
+          @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Введите валидный email</mat-error>
+          }
+          @if (emailFormControl.hasError('required')) {
+            <mat-error>Обязательно для заполнения</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input type="password" matInput placeholder="Пароль">
+        </mat-form-field>
+
+        <button mat-flat-button>Войти</button>
+
+      </form>
+    </div>
+  </div>
+</div>

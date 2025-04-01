@@ -1,0 +1,28 @@
+.mat-mdc-fab {
+  background-color: var(--bs-mdc-fab)!important;
+  color: var(--bs-color-blue)!important;
+}
+
+.mat-mdc-extended-fab,
+.mat-mdc-unelevated-button {
+  box-shadow: none!important;
+  height: 46px!important;
+  border-radius: 8px!important;
+  font-weight: 400!important;
+}
+
+.mat-mdc-unelevated-button:not(:disabled) {
+  background-color: var(--bs-color-blue)!important;
+}
+
+.mat-mdc-outlined-button:not(:disabled) {
+  color: var(--bs-color-blue)!important;
+  border-color: var(--bs-color-blue)!important;
+  height: 48px!important;
+  border-radius: 8px!important;
+  white-space: nowrap;
+}
+
+.mat-mdc-icon-button {
+  color: var(--bs-svg-color) !important;
+}

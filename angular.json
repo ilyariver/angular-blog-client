@@ -7,7 +7,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush"
         }
       },
       "root": "",
@@ -29,11 +30,19 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/styles/scss/components",
+                "src/assets/styles/scss/config"
+              ]
+            },
             "scripts": [],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -93,9 +102,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -103,5 +114,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

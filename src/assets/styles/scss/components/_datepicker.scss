@@ -1,0 +1,42 @@
+.mat-mdc-icon-button svg {
+  fill: var(--bs-svg-color) !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: var(--bs-font-color)!important;
+}
+
+.mat-datepicker-content {
+  background-color: var(--bs-secondary-background-color)!important;
+  box-shadow: var(--bs-shadow) !important;
+}
+
+.mat-calendar {
+  font-family: var(--bs-font-family), sans-serif!important;
+}
+
+.mat-calendar-body-label {
+  color: var(--bs-font-color)!important;
+}
+
+.mat-calendar-body-cell-content {
+  color: var(--bs-font-color)!important;
+}
+
+.mat-datepicker-input {
+  position: absolute;
+  top: 15px;
+  font-size: 14px !important;
+}
+
+.datepicker {
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__inputs {
+    display: flex;
+    gap: 10px;
+  }
+}
+

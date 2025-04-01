@@ -1,0 +1,112 @@
+@use "mixins";
+
+:host {
+  display: block;
+
+  @include mixins.not-last {
+    margin-bottom: 50px;
+  }
+}
+
+::ng-deep .article {
+  //width: 750px;
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+  overflow: hidden;
+
+  &__img {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+
+    &--big {
+      height: 430px;
+    }
+  }
+
+  &__body {
+    padding: 20px;
+    background-color: var(--bs-secondary-background-color);
+    gap: 10px;
+  }
+
+  &__avatar {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+  }
+
+  &__author {
+    margin-bottom: 15px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__name {
+    font-weight: 600;
+  }
+
+  &__publish-date {
+    color: var(--bs-font-color-gray);
+    font-size: 13px;
+  }
+
+  &__title {
+    margin-bottom: 18px!important;
+    font-weight: 700;
+    font-size: 25px!important;
+    line-height: 1.2;
+    transition: color 0.15s ease;
+
+    @include mixins.any-hover {
+      color: var(--bs-color-blue);
+    }
+
+    @include mixins.line-clamp(2)
+  }
+
+  &__tags {
+    display: flex;
+    margin-bottom: 20px;
+    color: var(--bs-font-color-gray);
+    font-size: 14px;
+    gap: 15px;
+  }
+
+  &__tag {
+
+  }
+
+  &__text {
+    margin-bottom: 25px;
+    font-weight: 500;
+    line-height: 2;
+
+    a {
+      color: var(--bs-color-blue);
+    }
+  }
+
+  &__statistic {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    color: var(--bs-font-color-gray);
+    font-size: 14px;
+    gap: 3px;
+  }
+}

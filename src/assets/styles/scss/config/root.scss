@@ -1,0 +1,60 @@
+:root {
+  // Семейство шрифта по умолчанию
+  --bs-font-family: Inter;
+
+  // Размер шрифта по умолчанию
+  --bs-font-size: 16px;
+
+  // Жирность шрифта по умолчанию
+  --bs-font-weight: 400;
+
+  // Базовая высота шрифта
+  --bs-line-height: 1;
+
+  // Цвет шрифта по умолчанию
+  --bs-font-color: #212529;
+  --bs-font-color-sec: #212529;
+  --bs-font-color-secondary: #bb86fc;
+  --bs-background-color: #f8f8f8;
+  --bs-secondary-background-color: #fff;
+  --color-line: #ccc;
+  --filter-btn: #F1F5FE;
+  --bs-font-color-gray: #999;
+  --bs-svg-color: #555555;
+  --bs-color-blue: #336FEE;
+  --bs-color-dark-blue: #00091C;
+  --bs-border-color: #F4F4F5;
+  --bs-transition: 0.3s ease-in-out;
+  --bs-radius: 10px;
+  --bs-mdc-fab: #F1F5FE;
+  --primary-color: #131313;
+  --primary-hover-color: #2d2d2d;
+  --secondary-color: #FF4949;
+  --error-font-color: #f44336;
+  --error-back-color: #ffd4d0;
+  --error-line-color: #ffbfbc;
+  --white-color: #fff;
+  --black-color: #131313;
+  --bs-shadow: 0 11px 38px #0000000a,
+    0 12.56px 16.5656px #00000007,
+    0 11.75px 14.18px #00000005,
+    0 11.06px 11.2px #00000003;
+  --hover-shadow: 0 0 5px 0 #{rgba(#000, 10%)}, 0 0 10px 0 #{rgba(#000, 10%)}, 0 0 15px 0 #{rgba(#000, 10%)};
+}
+
+.dark-theme {
+  // Dark theme colors
+  --primary-color: #bb86fc;
+  --bs-background-color: #1c1c1c;
+  --bs-secondary-background-color: #222;
+  --color-line: #3c3c3c;
+  --bs-font-color: #fff;
+  --surface-color: #1e1e1e;
+  --error-color: #cf6679;
+  --filter-btn: #303030;
+  --bs-mdc-fab: #f1f5fe17;
+  --bs-svg-color: #999999;
+  --error-font-color: #ff6559;
+  --error-back-color: #fb7a6e21;
+  --error-line-color: #ff9a9545;
+}
