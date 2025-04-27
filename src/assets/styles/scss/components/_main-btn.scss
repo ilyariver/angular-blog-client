@@ -26,3 +26,27 @@
 .mat-mdc-icon-button {
   color: var(--bs-svg-color) !important;
 }
+
+.mat-mdc-menu-item-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-with-decr {
+  position: relative;
+}
+
+.description {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  color: #d6d6d6;
+  white-space: nowrap;
+}
+
+[mat-button].mdc-button.mat-warn {
+  color: var(--secondary-color)!important;
+}

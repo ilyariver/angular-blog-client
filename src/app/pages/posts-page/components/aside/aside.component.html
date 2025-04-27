@@ -1,0 +1,33 @@
+<div class="aside">
+  @if (tags) {
+    @if (tags.length) {
+      <div class="aside__item">
+        <div class="aside__title">Тэги</div>
+
+        <div class="aside__item-body">
+          @for (tag of tags; track tag) {
+            <app-tag-badge>#{{ tag }}</app-tag-badge>
+          }
+        </div>
+      </div>
+    }
+  }
+
+  <div class="aside__item">
+    <div class="aside__title">Комментарии</div>
+
+    <div class="aside__item-body">
+      <app-comments [userData]="userInfo">
+        Это тестовый коммент
+      </app-comments>
+      <app-comments [userData]="userInfo">
+        Как уже неоднократно упомянуто, независимые государства освещают чрезвычайно интересные особенности картины
+        в целом, однако конкретные выводы, разумеется, объединены в целые кластеры себе подобных.
+      </app-comments>
+      <app-comments [userData]="userInfo">
+        Задача организации, в особенности же граница обучения кадров предполагает независимые способы
+        реализации стандартных подходов.
+      </app-comments>
+    </div>
+  </div>
+</div>

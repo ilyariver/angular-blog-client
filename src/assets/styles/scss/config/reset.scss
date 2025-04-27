@@ -28,7 +28,7 @@ aside {
 }
 
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: auto;
 	transition: opacity 0.8s ease-in-out;
   scrollbar-gutter: stable;
 
@@ -128,14 +128,16 @@ ul, ol {
 
 img {
 	vertical-align: top;
+  width: 100%;
+  height: auto;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1:not(.ql-snow .ql-editor h1),
+h2:not(.ql-snow .ql-editor h2),
+h3:not(.ql-snow .ql-editor h3),
+h4:not(.ql-snow .ql-editor h4),
+h5:not(.ql-snow .ql-editor h5),
+h6:not(.ql-snow .ql-editor h6) {
   margin: 0;
 	font-size: inherit!important;
 	font-weight: 400;

@@ -9,13 +9,15 @@
   &__container {
     display: flex;
     justify-content: space-between;
-    padding: 30px;
+    padding: 15px 20px;
     background-color: var(--bs-secondary-background-color);
     border-radius: 50px;
     border: 1px solid var(--color-line);
   }
 
   &__logo {
+    display: flex;
+    align-items: center;
   }
 
   &__logo-link {
@@ -23,18 +25,59 @@
     padding: 5px 10px;
     color: #7e7e7e;
     border-radius: 8px 12px 8px 15px;
+    text-transform: uppercase;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__user-avatar {
+    background-image: url("/assets/images/avatar-placeholder.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    border-radius: 50%;
   }
 
   &__list {
     display: flex;
+    align-items: center;
     gap: 2rem;
   }
 
   &__link {
     transition: color 0.15s ease;
+    font-family: var(--bs-font-family)!important;
+
+    &--active {
+      color: var(--bs-color-blue);
+    }
 
     &:hover {
       color: var(--bs-color-blue);
+
+      .svg-stroke {
+        stroke: var(--bs-color-blue)!important;
+      }
+
+      .path-fill {
+        path {
+          fill: var(--bs-color-blue)!important;
+        }
+      }
+
+      .path-stroke {
+        path, circle {
+          stroke: var(--bs-color-blue)!important;
+        }
+      }
+
     }
   }
 }

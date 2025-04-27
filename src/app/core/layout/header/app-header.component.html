@@ -1,20 +1,59 @@
 <header class="header">
   <div class="header__container">
     <div class="header__logo">
-      <a href="#" class="header__logo-link">
+      <a routerLink="/" class="header__logo-link">
         DUBINEVICH BLOG
       </a>
     </div>
     <nav class="header__nav">
       <ul class="header__list">
         <li class="header__item">
-          <a href="#" class="header__link">Главная</a>
+          <a routerLink="/" routerLinkActive="header__link--active" [routerLinkActiveOptions]="{exact: true}" class="header__link">Главная</a>
         </li>
+        @if (isAuth) {
+          <li class="header__item">
+            <a routerLink="new-post" routerLinkActive="header__link--active" class="header__link">Новая статья</a>
+          </li>
+        }
         <li class="header__item">
-          <a href="#" class="header__link">Войти</a>
-        </li>
-        <li class="header__item">
-          <a href="#" class="header__link">Создать аккаунт</a>
+          <button
+            class="header__user-avatar"
+            [matMenuTriggerFor]="menu"
+            [style.background-image]="'url(' + avatarUrl + ')'"
+          ></button>
+          <mat-menu #menu="matMenu" class="mat-menu">
+            @if (isAuth) {
+              <div class="mat-menu__body">
+                <div class="mat-menu__avatar" [style.background-image]="'url(' + avatarUrl + ')'"></div>
+                <div class="mat-menu__title">
+                  {{currentUserName}}
+                </div>
+              </div>
+              <button mat-menu-item class="header__link" (click)="openConfirmWindow()">
+                <svg class="path-stroke" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M9.00195 7C9.01406 4.82497 9.11051 3.64706 9.87889 2.87868C10.7576 2 12.1718 2 15.0002 2L16.0002 2C18.8286 2 20.2429 2 21.1215 2.87868C22.0002 3.75736 22.0002 5.17157 22.0002 8L22.0002 16C22.0002 18.8284 22.0002 20.2426 21.1215 21.1213C20.2429 22 18.8286 22 16.0002 22H15.0002C12.1718 22 10.7576 22 9.87889 21.1213C9.11051 20.3529 9.01406 19.175 9.00195 17" stroke="#1C274C" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M15 12L2 12M2 12L5.5 9M2 12L5.5 15" stroke="#1C274C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Выйти
+              </button>
+            } @else {
+              <a mat-menu-item routerLink="login" routerLinkActive="header__link--active" class="header__link">
+                <svg class="path-stroke" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M2.00098 11.999L16.001 11.999M16.001 11.999L12.501 8.99902M16.001 11.999L12.501 14.999" stroke="#1C274C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9.00195 7C9.01406 4.82497 9.11051 3.64706 9.87889 2.87868C10.7576 2 12.1718 2 15.0002 2L16.0002 2C18.8286 2 20.2429 2 21.1215 2.87868C22.0002 3.75736 22.0002 5.17157 22.0002 8L22.0002 16C22.0002 18.8284 22.0002 20.2426 21.1215 21.1213C20.2429 22 18.8286 22 16.0002 22H15.0002C12.1718 22 10.7576 22 9.87889 21.1213C9.11051 20.3529 9.01406 19.175 9.00195 17" stroke="#1C274C" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Войти
+              </a>
+              <a mat-menu-item routerLink="registration" routerLinkActive="header__link--active" class="header__link">
+                <svg class="path-stroke" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <circle cx="9" cy="7" r="4" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 21V17C2 15.8954 2.89543 15 4 15H14C15.1046 15 16 15.8954 16 17V21" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M19 8V14M16 11H22" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Создать аккаунт
+              </a>
+            }
+          </mat-menu>
         </li>
       </ul>
     </nav>

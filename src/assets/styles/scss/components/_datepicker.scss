@@ -4,6 +4,10 @@
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
   color: var(--bs-font-color)!important;
+
+  &::placeholder {
+    color: #838383 !important;
+  }
 }
 
 .mat-datepicker-content {

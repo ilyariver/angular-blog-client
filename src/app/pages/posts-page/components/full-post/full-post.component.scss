@@ -1,0 +1,138 @@
+@use "mixins";
+
+:host {
+  display: block;
+
+  @include mixins.not-last {
+    margin-bottom: 50px;
+  }
+}
+
+::ng-deep .article {
+  position: relative;
+  //width: 750px;
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: border 0.15s ease;
+
+  &:hover {
+    .article__edit {
+      display: flex;
+    }
+  }
+
+  &--hover {
+    &:hover {
+      border: 1px solid #9494fa;
+
+      .article__title--link {
+        color: var(--bs-color-blue);
+      }
+    }
+  }
+
+  &__edit {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    gap: 10px;
+    display: none;
+
+    &-btn {
+      background-color: #ffffff;
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
+
+  &__body {
+    padding: 20px 50px 20px 20px;
+    background-color: var(--bs-secondary-background-color);
+    gap: 10px;
+  }
+
+  &__avatar {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+  }
+
+  &__right {
+    width: 100%;
+  }
+
+  &__author {
+    margin-bottom: 15px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__name {
+    font-weight: 600;
+  }
+
+  &__publish-date {
+    color: var(--bs-font-color-gray);
+    font-size: 13px;
+  }
+
+  &__title {
+    margin-bottom: 18px!important;
+    font-weight: 700;
+    font-size: 25px!important;
+    line-height: 1.2;
+    transition: color 0.15s ease;
+
+    &--link {
+      @include mixins.line-clamp(1)
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    width: 80%;
+    color: var(--bs-font-color-gray);
+    font-size: 14px;
+    gap: 15px 20px;
+  }
+
+  &__tag {
+    white-space: nowrap;
+  }
+
+  &__text {
+    margin-bottom: 25px;
+    font-weight: 500;
+    line-height: 1.6;
+
+    a {
+      color: var(--bs-color-blue);
+    }
+  }
+
+  &__statistic {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    color: var(--bs-font-color-gray);
+    font-size: 14px;
+    gap: 3px;
+  }
+}

@@ -107,10 +107,6 @@ div.mat-mdc-select-panel,
   color: var(--bs-font-color)!important;
 }
 
-.mat-mdc-form-field-subscript-wrapper {
-  display: none !important;
-}
-
 .mat-mdc-select {
   color: var(--bs-font-color)!important;
   transition: color 0.3s ease;
@@ -118,4 +114,13 @@ div.mat-mdc-select-panel,
 
 .mat-mdc-select-trigger {
   top: -6px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--invalid .mdc-line-ripple::before {
+  border-bottom-color: var(--error-font-color)!important;
+}
+
+.mat-mdc-form-field-error {
+  font-family: var(--bs-font-family), sans-serif!important;
+  color: var(--error-font-color)!important;
 }

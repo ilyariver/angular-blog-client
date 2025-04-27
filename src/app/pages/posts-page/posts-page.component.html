@@ -1,0 +1,23 @@
+<div class="home-page">
+  <div class="home-page__container">
+    @defer {
+      @if (allPosts) {
+        <div class="home-page__wrap">
+          <div class="home-page__articles">
+            @for (post of allPosts; track post) {
+              <app-post [data]="post"></app-post>
+            }
+          </div>
+
+          <aside class="home-page__aside">
+            <app-aside [tags]="allTags"></app-aside>
+          </aside>
+        </div>
+      } @else {
+        Статей нет...
+      }
+    } @placeholder {
+      <app-sk-posts-page></app-sk-posts-page>
+    }
+  </div>
+</div>

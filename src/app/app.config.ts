@@ -1,16 +1,37 @@
 import {
-  ApplicationConfig,
+  ApplicationConfig, InjectionToken,
   LOCALE_ID,
   provideZoneChangeDetection
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {
+  InMemoryScrollingFeature,
+  InMemoryScrollingOptions,
+  provideRouter,
+  withInMemoryScrolling
+} from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {provideHttpClient, withFetch, withInterceptors} from '@angular/common/http';
-import {httpRequestsInterceptor} from './core/api-authorization/http-requests.interceptor';
 import {provideQuillConfig} from 'ngx-quill';
+import {quillConfig} from './utils/quill-config';
+import {environment} from '../environments/environment';
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+import {authInterceptor} from './core/services/auth/auth.interceptor';
+
+registerLocaleData(localeRu);
+
+const scrollConfig: InMemoryScrollingOptions = {
+  scrollPositionRestoration: 'top',
+  anchorScrolling: 'disabled',
+};
+
+const inMemoryScrollingFeature: InMemoryScrollingFeature =
+  withInMemoryScrolling(scrollConfig);
+
+export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 
 
 export const appConfig: ApplicationConfig = {
@@ -18,41 +39,13 @@ export const appConfig: ApplicationConfig = {
     { provide: LOCALE_ID, useValue: 'ru-RU' },
     provideAnimationsAsync(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(routes, inMemoryScrollingFeature),
     provideClientHydration(withEventReplay()),
     provideHttpClient(
-      withInterceptors([httpRequestsInterceptor]),
+      withInterceptors([authInterceptor]),
       withFetch(),
     ),
-    provideQuillConfig({
-      modules: {
-        syntax: true,
-        toolbar: [
-          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-          ['blockquote', 'code-block'],
-
-          [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-          [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-          [{ 'direction': 'rtl' }],                         // text direction
-
-          [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-          [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-          [{ 'font': [] }],
-          [{ 'align': [] }],
-
-          ['clean'],                                         // remove formatting button
-
-          ['link', 'image', 'video']                         // link and image, video
-        ]
-      }
-    })
-    // provideAppInitializer(() => {
-    //   const initializerFn = (authAppInitializerFactory)(inject(AuthService));
-    //   return initializerFn();
-    // }),
+    provideQuillConfig(quillConfig),
+    { provide: API_BASE_URL, useValue: environment.baseUrl },
   ]
 };

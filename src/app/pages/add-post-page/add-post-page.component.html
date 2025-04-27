@@ -1,0 +1,103 @@
+<div class="add-post-page">
+  <div class="add-post-page__container">
+    <div class="add-post-page__top-btns">
+      <button
+        class="btn-with-decr"
+        mat-flat-button
+        (click)="uploadFile.click()"
+        [disabled]="!!imgUrl"
+      >
+        Загрузить изображение
+        <div class="description">Фотка не должна преышать 5Мб</div>
+      </button>
+      @if (file) {
+        <button mat-button color="warn" (click)="deleteImg()">Удалить</button>
+      }
+    </div>
+
+    @if (file) {
+      <img class="add-post-page__preview-img" [src]="imgUrl" alt="Картинка статьи">
+    }
+
+    <form class="add-post-page__form" [formGroup]="formPost" (ngSubmit)="send()">
+      <input
+        type="file"
+        style="display: none"
+        #uploadFile
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        formControlName="imageUrl"
+      >
+
+      <mat-form-field class="add-post-page__form-field">
+        <input matInput type="text" placeholder="Заголовок статьи..." formControlName="title">
+        @if (value) {
+          <button matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_3231_11312)">
+                <path d="M18 6L6 18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_3231_11312">
+                  <rect width="24" height="24" fill="white"/>
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="add-post-page__chip-list">
+        <mat-chip-grid #chipGrid aria-label="Введите тэг" formControlName="tags">
+          @for (tag of tags(); track tag) {
+            <mat-chip-row
+              (removed)="remove(tag)"
+              [editable]="true"
+              (edited)="edit(tag, $event)"
+              [aria-description]="'Нажмите Enter, чтобы добавить тэг' + tag.name"
+            >
+              {{tag.name}}
+              <button style="z-index: 3" matChipRemove [attr.aria-label]="'удалить ' + tag.name">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_3231_11312)">
+                    <path d="M18 6L6 18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 6L18 18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_3231_11312">
+                      <rect width="24" height="24" fill="white"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </button>
+            </mat-chip-row>
+          }
+          <input
+            placeholder="Тэги"
+            [matChipInputFor]="chipGrid"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-grid>
+      </mat-form-field>
+
+      @defer {
+        <quill-editor formControlName="text"></quill-editor>
+      } @placeholder {
+        <div class="add-post-page__placeholder">
+          <div class="add-post-page__placeholder-text">
+            Загрузка...
+          </div>
+        </div>
+      }
+
+      <div class="add-post-page__btns">
+        <button mat-flat-button [disabled]="formPost.invalid">Опубликовать</button>
+        <button routerLink="/" mat-button>Отмена</button>
+      </div>
+    </form>
+
+  </div>
+</div>

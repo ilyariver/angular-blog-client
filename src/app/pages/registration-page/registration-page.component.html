@@ -1,0 +1,55 @@
+<div class="auth-panel">
+  <div class="auth-panel__container">
+    <div class="auth-panel__panel">
+      <h1 class="auth-panel__title">Создание аккаунта</h1>
+
+      <div class="auth-panel__avatar" [style.background-image]="'url(/assets/images/avatar-placeholder.png)'"></div>
+
+      <form class="auth-panel__form" [formGroup]="formRegistration" (ngSubmit)="send()">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Полное имя" formControlName="fullName">
+          @if (formRegistration.get('fullName')?.hasError('required')) {
+            <mat-error>Обязательно для заполнения</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            [errorStateMatcher]="matcher"
+            placeholder="E-Mail"
+          >
+          @if (formRegistration.get('email')?.hasError('email') && !formRegistration.get('email')?.hasError('required')) {
+            <mat-error>Введите валидный email</mat-error>
+          }
+          @if (formRegistration.get('email')?.hasError('required')) {
+            <mat-error>Обязательно для заполнения</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input type="password" matInput placeholder="Пароль" formControlName="password">
+          @if (formRegistration.get('password')?.hasError('required')) {
+            <mat-error>Обязательно для заполнения</mat-error>
+          }
+          @if (formRegistration.get('password')?.hasError('minlength')) {
+            <mat-error>Минимальная длина - {{formRegistration.get('password')?.errors?.['minlength']?.requiredLength}} символов.</mat-error>
+          }
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          type="submit"
+          [disabled]="formRegistration.invalid"
+        >
+          Зарегистрироваться
+        </button>
+
+        <a class="auth-panel__gray-text" [routerLink]="['/login']">У меня уже есть аккаунт</a>
+
+      </form>
+    </div>
+  </div>
+</div>

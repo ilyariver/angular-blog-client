@@ -1,0 +1,41 @@
+<div class="auth-panel">
+  <div class="auth-panel__container">
+    <div class="auth-panel__panel" [@shake]="triggeredErrorShake">
+      <h1 class="auth-panel__title">Вход в аккаунт</h1>
+
+      <form class="auth-panel__form" [formGroup]="formLogin" (ngSubmit)="send()">
+        <mat-form-field class="example-full-width">
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            [errorStateMatcher]="matcher"
+            placeholder="E-Mail"
+          >
+          @if (formLogin.get('email')?.hasError('email') && !formLogin.get('email')?.hasError('required')) {
+            <mat-error>Введите валидный email</mat-error>
+          }
+          @if (formLogin.get('email')?.hasError('required')) {
+            <mat-error>Обязательно для заполнения</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input type="password" matInput placeholder="Пароль" formControlName="password">
+          @if (formLogin.get('password')?.hasError('required')) {
+            <mat-error>Обязательно для заполнения</mat-error>
+          }
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          type="submit"
+          [disabled]="formLogin.invalid"
+        >
+          Войти
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>

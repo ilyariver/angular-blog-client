@@ -1,0 +1,34 @@
+<div class="article-comments">
+  <h2 class="article-comments__title">Комментарии</h2>
+
+  <div class="article-comments__body">
+
+    <ul class="article-comments__list">
+      <li class="article-comments__item">
+        <div class="article-comments__avatar" [style.background-image]="'url(/assets/images/avatar-placeholder.png)'"></div>
+        <div class="article-comments__content">
+          <h3 class="article-comments__comment-title">Вася Пупкин</h3>
+          <p class="article-comments__comment-text">Это статичный коммент</p>
+        </div>
+      </li>
+      <li class="article-comments__item">
+        <div class="article-comments__avatar" [style.background-image]="'url(/assets/images/avatar-placeholder.png)'"></div>
+        <div class="article-comments__content">
+          <h3 class="article-comments__comment-title">Иван Иванов</h3>
+          <p class="article-comments__comment-text">
+            Равным образом, убеждённость некоторых оппонентов прекрасно подходит для реализации укрепления моральных ценностей.
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    <form class="article-comments__form">
+      <mat-form-field class="article-comments__form-field">
+        <textarea matInput placeholder="Написать комментарий"></textarea>
+      </mat-form-field>
+
+      <button mat-flat-button>Отправить</button>
+    </form>
+
+  </div>
+</div>

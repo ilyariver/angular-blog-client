@@ -5,10 +5,13 @@
 }
 
 .ql-container.ql-snow {
+  margin-top: 20px;
   background-color: #fff;
   border: none!important;
 }
 
 .ql-editor {
   min-height: 350px;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
 }
