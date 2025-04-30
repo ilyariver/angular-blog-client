@@ -1,6 +1,6 @@
 @if (post) {
   <div class="article">
-    <app-full-post-img></app-full-post-img>
+    <app-full-post-img [imageUrl]="post.imageUrl ? baseUrl + post.imageUrl : null"></app-full-post-img>
 
     <div class="article__body d-flex">
 

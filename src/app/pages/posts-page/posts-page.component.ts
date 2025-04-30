@@ -16,7 +16,6 @@ import {ToastService} from '../../shared/services/toast.service';
   ],
   templateUrl: './posts-page.component.html',
   styleUrl: './posts-page.component.scss',
-  providers: [PostsPageService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostsPageComponent implements OnInit {
@@ -31,6 +30,7 @@ export class PostsPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.postsService.updatedPosts.subscribe(() => this.getAllPosts());
     this.getAllPosts();
     this.getLastTags();
   }
@@ -43,7 +43,7 @@ export class PostsPageComponent implements OnInit {
             this.allPosts = posts;
             this.cd.detectChanges();
           },
-          error: error => this.toast.show('error', 'Ошибка загрузки статей!',error.message),
+          error: error => this.toast.show('error', 'Ошибка загрузки статей!', error.message),
         });
     }
   }

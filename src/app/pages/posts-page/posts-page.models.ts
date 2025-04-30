@@ -6,5 +6,6 @@ export interface Post extends BaseEntity {
   text: string;
   tags: string[];
   viewsCount: number;
+  imageUrl: string;
   user: User;
 }

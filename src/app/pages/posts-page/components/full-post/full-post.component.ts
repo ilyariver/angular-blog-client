@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, PLATFORM_ID} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, inject, PLATFORM_ID} from '@angular/core';
 import {SafeContentPipe} from '../../../../core/pipes/safe-content.pipe';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FullPostImgComponent} from './post-img/full-post-img.component';
@@ -6,6 +6,7 @@ import {Post} from '../../posts-page.models';
 import {DatePipe, isPlatformBrowser} from '@angular/common';
 import {PostsPageService} from '../../posts-page.service';
 import {SkFullPostComponent} from '../../../../shared/skeletons/sk-full-post/sk-full-post.component';
+import {API_BASE_URL} from '../../../../app.config';
 
 @Component({
   selector: 'app-full-post',
@@ -18,7 +19,6 @@ import {SkFullPostComponent} from '../../../../shared/skeletons/sk-full-post/sk-
     FullPostImgComponent,
     SkFullPostComponent,
   ],
-  providers: [PostsPageService],
 })
 export class FullPostComponent {
   public post!: Post;
@@ -29,6 +29,7 @@ export class FullPostComponent {
     private route: ActivatedRoute,
     private postsService: PostsPageService,
     private cd: ChangeDetectorRef,
+    @Inject(API_BASE_URL) public baseUrl: string,
   ) {
     const postId = this.route.snapshot.params['id'];
 

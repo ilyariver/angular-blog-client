@@ -8,7 +8,7 @@
         [disabled]="!!imgUrl"
       >
         Загрузить изображение
-        <div class="description">Фотка не должна преышать 5Мб</div>
+        <div class="description">Фотка не должна преышать {{sizeImg}}Мб</div>
       </button>
       @if (file) {
         <button mat-button color="warn" (click)="deleteImg()">Удалить</button>
@@ -26,7 +26,6 @@
         #uploadFile
         (change)="onFileSelected($event)"
         accept="image/*"
-        formControlName="imageUrl"
       >
 
       <mat-form-field class="add-post-page__form-field">

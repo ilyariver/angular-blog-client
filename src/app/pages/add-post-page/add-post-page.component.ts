@@ -39,6 +39,7 @@ export interface Tag {
 export class AddPostPageComponent {
   public formPost!: FormGroup;
   public value: string = '';
+  public sizeImg: number = 5;
   public imgUrl: string | null = null;
   public file: File | null = null;
 
@@ -54,7 +55,7 @@ export class AddPostPageComponent {
     private addPostPageService: AddPostPageService,
     private toast: ToastService,
     private router: Router,
-    @Inject(API_BASE_URL) private baseUrl: string,
+    @Inject(API_BASE_URL) public baseUrl: string,
     private cdk: ChangeDetectorRef,
   ) {
     this.initForm();
@@ -139,11 +140,14 @@ export class AddPostPageComponent {
         return;
       }
       // Проверка размера файла (например, не более 5MB)
-      if (file.size > 5 * 1024 * 1024) {
-        this.toast.show('error', 'Большой файл.', 'Размер файла не должен превышиать 5Мб.');
+      if (file.size > this.sizeImg * 1024 * 1024) {
+        this.toast.show('error', 'Большой файл.', `Размер файла не должен превышиать ${this.sizeImg}Мб.`);
         return;
       }
       this.file = file;
+      this.formPost.patchValue({
+        imageUrl: this.file.name,
+      })
       this.uploadOnServer(formData)
     }
   }
@@ -181,18 +185,12 @@ export class AddPostPageComponent {
     this.addPostPageService.createNewPost(params)
       .subscribe({
         next: (res: AddPostPage) => {
-          console.log(res)
           this.toast.show('success', 'Успешно.', `Статья "${res.title || 'Новая статья'}" создана!`)
+          this.router.navigate(['article', res._id]);
         },
         error: (err) => {
-          debugger
-          this.toast.show('error', 'Ошибка.', err.message);
+          this.toast.show('error', 'Ошибка при создании статьи.', err.message);
         },
-        complete: () => {
-          setTimeout(() => {
-            this.router.navigate(['/']);
-          }, 2000);
-        }
       });
   }
 }
